@@ -28,7 +28,7 @@
                                     <h3 id="reply-title" class="comment-reply-title">Get in touch</h3>
                                     <p>We will reply your message within 24 hours!</p>
                                 </header>
-                                <form action="#" method="post" id="commentform" class="comment-form">
+                                <form action="{{ URL('contact') }}" method="post" id="commentform" class="comment-form">
                                     <div class="wrap form-group">
                                         <div class="comment-form-author">
                                             <label for="author">Your name <span class="required">*</span></label>
@@ -42,7 +42,7 @@
                                     <div class="wrap form-group">
                                         <div class="comment-form-tel">
                                             <label for="nmber">Phone number <span class="required">*</span></label>
-                                            <input type="tel" id="nmber" name="tel" placeholder="Phone number" size="30">
+                                            <input type="tel" id="number" name="tel" placeholder="Phone number" size="30">
                                         </div>
                                         <div class="comment-form-url">
                                             <label for="url">Website <span class="text-light">(Optional)</span></label>
@@ -60,6 +60,7 @@
                                             &lt;strong&gt; </code></p>
                                     <div class="form-submit">
                                         <input type="submit" name="submit" id="submit" value="Leave a comment">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID">
                                         <input type="hidden" name="comment_parent" id="comment_parent" value="0">
                                     </div>
@@ -76,7 +77,7 @@
                                     </a>
                                 </div>
                                 <h3><a href="#"><img src="/images/blog/text-jhon-aston.png" alt="jhon aston"></a></h3>
-                                <p>Hi, I am John Aston. Duis autem vel eum dolor in hendrerit in vulputate velit esse mole consequat, vel illum dolore eu feugiat nulla lisis at vero eros et accumsan et iusto.</p>
+                                <p>Hi, I'm Pan Meng. I'm in Beijing, China. I'm glad you saw my blog.</p>
                                 <!-- Social Network of the page -->
                                 <ul class="social-networks">
                                     <li><a href="#"><span class="icon ico-facebook"></span></a></li>
@@ -91,9 +92,9 @@
                             <!-- Widget of the page -->
                             <div class="widget tel-widget version-ii contact-widget wow fadeInUp" data-wow-delay="0.6s">
                                 <p>
-                                    <a href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#064;&#100;&#111;&#116;&#046;&#099;&#111;&#109;"><span class="ico-card icon"></span>&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#064;&#100;&#111;&#116;&#046;&#099;&#111;&#109;</a>
+                                    <a href="mailto:pmm_email@126.com"><span class="ico-card icon"></span>pmm_email@126.com</a>
                                     <br>
-                                    <a href="tel:+0034524325"><span class="ico-mobile icon"></span>+00-3452-4325</a>
+                                    <a href="tel:+0034524325"><span class="ico-mobile icon"></span>+86-13552755295</a>
                                 </p>
                             </div>
                             <!-- Widget of the page end -->

@@ -203,7 +203,7 @@
                                 </a>
                             </div>
                             <h3><a href="#"><img src="/images/blog/text-jhon-aston.png" alt="jhon aston"></a></h3>
-                            <p>Hi, I am John Aston. Duis autem vel eum dolor in hendrerit in vulputate velit esse mole consequat, vel illum dolore eu feugiat nulla lisis at vero eros et accumsan et iusto.</p>
+                            <p>Hi, I'm Pan Meng. I'm in Beijing, China. I'm glad you saw my blog.</p>
                             Social Network of the page
                             <ul class="social-networks">
                                 <li><a href="#"><span class="icon ico-facebook"></span></a></li>

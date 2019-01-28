@@ -16,7 +16,17 @@ class ArchiveController extends Controller
      */
     public function index()
     {
-        return view('blog.archive');
+        $blogRecords = Blog::paginate(5);   //orm分页函数
+//        $blogRecord = DB::select('select * from article');   //facade
+//        echo '<pre>';
+//        var_dump($blogRecord);die;
+//        $blogRecord = DB::table('article')->get();     //构造查询器
+//        $blogRecord = DB::table('article')->paginate(15);     //构造查询器分页函数
+//        dd($blogRecord);die;
+        foreach ($blogRecords as $v){
+            $v->created_at_format = $v->created_at->format('dS M');
+        }
+        return view('blog.archive', ['blogRecords' => $blogRecords]);
     }
 
     /**
@@ -90,11 +100,13 @@ class ArchiveController extends Controller
      * ----start----
      * */
     public function blogRecord(){
-        $blogRecord = Blog::all();   //orm
+//        $blogRecord = Blog::all();   //orm
+        $blogRecord = Blog::paginate(5);   //orm分页函数
 //        $blogRecord = DB::select('select * from article');   //facade
 //        echo '<pre>';
-//        var_dump($blogRecord);
+//        var_dump($blogRecord);die;
 //        $blogRecord = DB::table('article')->get();     //构造查询器
+//        $blogRecord = DB::table('article')->paginate(15);     //构造查询器分页函数
 //        dd($blogRecord);die;
         foreach ($blogRecord as $v){
             $v->created_at_format = $v->created_at->format('dS M');

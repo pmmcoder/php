@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Blog;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
+use App\Visitor;
 
 class ContactController extends Controller
 {
@@ -14,7 +16,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('blog.contact');
+        $userInfo=User::find(2);
+
+        return view('blog.contact',compact('userInfo'));
     }
 
     /**
@@ -36,6 +40,21 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         //
+        $visitor = new Visitor;
+
+//        var_dump($request->input());die;
+        $visitor->name = $request->input('author');
+        $visitor->email = $request->input('email');
+        $visitor->phone = $request->input('tel');
+        $visitor->website = $request->input('url');
+        $visitor->message = $request->input('comment');
+        if ($visitor->save()) {
+            return redirect('contact');
+        } else {
+            return back()->withInput()->withErrors('±£¥Ê ß∞‹');
+        }
+
+
     }
 
     /**

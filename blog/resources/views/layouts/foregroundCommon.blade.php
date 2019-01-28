@@ -66,7 +66,7 @@
                 <div class="row holder">
                     <div class="col-xs-3 col-sm-2">
                         <!-- Logo of the page -->
-                        <div class="logo"><a href="{{ url('/') }}"><img src="/images/blog/logo2.png" alt="dot"></a></div>
+                        <div class="logo"><a href="{{ url('/') }}"><img src="/images/blog/logo3.png" alt="dot"></a></div>
                         <!-- Logo of the page end -->
                     </div>
                     <div class="col-xs-9 col-sm-10 nav-holder">
@@ -110,7 +110,7 @@
                         </a>
                     </div>
                     <h3><a href="#">John Aston</a></h3>
-                    <p>Hi, I am John Aston. Duis autem vel eum dolor in hendrerit in vulputate velit esse mole consequat, vel illum dolore eu feugiat nulla lisis at vero eros et accumsan et iusto.</p>
+                    <p>Hi, I'm Pan Meng. I'm in Beijing, China. I'm glad you saw my blog.</p>
                     <!-- Social Network of the page -->
                     <ul class="social-networks">
                         <li><a href="#"><span class="icon ico-facebook"></span></a></li>
@@ -136,7 +136,7 @@
             <div class="row">
                 <div class="col-xs-12 holder">
                     <div class="col">
-                        <div class="logo"><a href="#"><img src="/images/blog/logo2.png" alt="dot"></a></div>
+                        <div class="logo"><a href="#"><img src="/images/blog/logo3.png" alt="dot"></a></div>
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud.</p>
                         <!-- Social Network of the page -->
                         <ul class="social-networks">
@@ -220,6 +220,21 @@
 <script src="/js/blog/plugins.js"></script>
 <!-- include jQuery -->
 <script src="/js/blog/jquery.main.js"></script>
+<!-- Matomo -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//192.168.1.90/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', '3']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Matomo Code -->
 </body>
 </html>
 

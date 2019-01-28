@@ -1,5 +1,39 @@
 @extends('layouts.foregroundCommon')
 @section('archive')
+    <style type="text/css">
+        .pagination li{
+            display: inline;
+        }
+        .pagination{
+            display: inline-block;
+            padding-left: 0;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .pagination > li:first-child > a, .pagination > li:first-child > span{
+            margin-left: 0;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+        .pagination > li > a, .pagination > li > span{
+            position: relative;
+            float: left;
+            padding: 6px 12px;
+            margin-left: -1px;
+            line-height: 1.42857143;
+            color: #337ab7;
+            text-decoration: none;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+        .posts-blocks p{
+            height: 100px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+        }
+    </style>
         <!-- Main of the page -->
         <main id="main" role="main">
             <!-- Page head of the page -->
@@ -60,19 +94,38 @@
                         <!-- Widget of the page end -->
                         <!-- Posts Blocks of the page -->
                         <section class="posts-blocks">
+                            @foreach ($blogRecords as $blogRecord)
+                            <article class="post-block wow fadeInUp" data-wow-delay="0.6s">
+                            <div class="post-holder">
+                            <div class="img-holder">
+                            <a href="#"><img src="/images/blog/img67.jpg" alt="image description"></a>
+                            </div>
+                            <time datetime="'+ v.created_at+'"><a href="#">{{$blogRecord->created_at_format}} - Travel</a></time>
+                            <h2><a href="#">{{$blogRecord->title}}</a></h2>
+                            <p>{{$blogRecord->description}}</p>
+                            <a href="{{ url('single') }}" class="read-more">Read more</a>
+                            <footer>
+                            <strong class="text comment-count"><span class="icon ico-comment"></span><a href="#">25 comments</a></strong>
+                            <strong class="text share-count"><span class="icon ico-share"></span><a href="#">138 shares</a></strong>
+                            </footer>
+                            </div>
+                            </article>
+                            @endforeach
                         </section>
                         <!-- Posts Blocks of the page end -->
                         <!-- Navigation of the page -->
-                        <nav role="navigation" class="navigation pagination">
-                            <div class="nav-links">
-                                <a href="#" class="prev page-numbers">Prev post.</a>
-                                <a href="#" class="page-numbers">1</a>
-                                <span class="page-numbers current">2</span>
-                                <span class="page-numbers dots hidden">…</span>
-                                <a href="#" class="page-numbers">3</a>
-                                <a href="#" class="next page-numbers">NEXT post.</a>
-                            </div>
-                        </nav>
+                        {{--<nav role="navigation" class="navigation pagination">--}}
+                            {{--<div class="nav-links">--}}
+                                {{--<a href="#" class="prev page-numbers">Prev post.</a>--}}
+                                {{--<a href="#" class="page-numbers">1</a>--}}
+                                {{--<span class="page-numbers current">2</span>--}}
+                                {{--<span class="page-numbers dots hidden">…</span>--}}
+                                {{--<a href="#" class="page-numbers">3</a>--}}
+                                {{--<a href="#" class="next page-numbers">NEXT post.</a>--}}
+                            {{--</div>--}}
+                            {{--{{ var_dump($blogRecords->currentPage) }}--}}
+                            {{ $blogRecords->links() }}
+                        {{--</nav>--}}
                         <!-- Navigation of the page end -->
                     </div>
                     <!-- Sidebar of the page -->
@@ -85,7 +138,7 @@
                                 </a>
                             </div>
                             <h3><a href="#"><img src="/images/blog/text-jhon-aston.png" alt="jhon aston"></a></h3>
-                            <p>Hi, I am John Aston. Duis autem vel eum dolor in hendrerit in vulputate velit esse mole consequat, vel illum dolore eu feugiat nulla lisis at vero eros et accumsan et iusto.</p>
+                            <p>Hi, I'm Pan Meng. I'm in Beijing, China. I'm glad you saw my blog.</p>
                             <!-- Social Network of the page -->
                             <ul class="social-networks">
                                 <li><a href="#"><span class="icon ico-facebook"></span></a></li>
@@ -254,33 +307,50 @@
         <!-- Main of the page end -->
         <script src="/js/blog/jquery.js"></script>
     <script type="text/javascript">
-        $(function () {
-            $.ajax({
-                url: '{{ url('archive/blogRecord') }}',
-                type: 'get',
-                dataType: 'json',
-                success: function(data) {
-                    var html = '';
-                    $.each(data,function (k,v) {
-                        html += '<article class="post-block wow fadeInUp" data-wow-delay="0.6s">'+
-                            '<div class="post-holder">'+
-                            '<div class="img-holder">'+
-                            '<a href="#"><img src="/images/blog/img67.jpg" alt="image description"></a>'+
-                            '</div>'+
-                            '<time datetime="'+ v.created_at+'"><a href="#">'+v.created_at_format+' - Travel</a></time>'+
-                            '<h2><a href="#">'+ v.title+'</a></h2>'+
-                            '<p>'+ v.description+'</p>'+
-                            '<a href="{{ url('single') }}" class="read-more">Read more</a>'+
-                            '<footer>'+
-                            '<strong class="text comment-count"><span class="icon ico-comment"></span><a href="#">25 comments</a></strong>'+
-                            '<strong class="text share-count"><span class="icon ico-share"></span><a href="#">138 shares</a></strong>'+
-                            '</footer>'+
-                            '</div>'+
-                            '</article>';
-                    });
-                    $('.posts-blocks').append(html);
-                }
-            });
-        })
+        {{--$(function () {--}}
+            {{--$.ajax({--}}
+                {{--url: '{{ url('archive/blogRecord') }}',--}}
+                {{--type: 'get',--}}
+                {{--dataType: 'json',--}}
+                {{--success: function(data) {--}}
+                    {{--var html = '';--}}
+                    {{--$('.posts-blocks article').remove();--}}
+                    {{--$.each(data.data,function (k,v) {--}}
+                        {{--html += '<article class="post-block wow fadeInUp" data-wow-delay="0.6s">'+--}}
+                            {{--'<div class="post-holder">'+--}}
+                            {{--'<div class="img-holder">'+--}}
+                            {{--'<a href="#"><img src="/images/blog/img67.jpg" alt="image description"></a>'+--}}
+                            {{--'</div>'+--}}
+                            {{--'<time datetime="'+ v.created_at+'"><a href="#">'+v.created_at_format+' - Travel</a></time>'+--}}
+                            {{--'<h2><a href="#">'+ v.title+'</a></h2>'+--}}
+                            {{--'<p>'+ v.description+'</p>'+--}}
+                            {{--'<a href="{{ url('single') }}" class="read-more">Read more</a>'+--}}
+                            {{--'<footer>'+--}}
+                            {{--'<strong class="text comment-count"><span class="icon ico-comment"></span><a href="#">25 comments</a></strong>'+--}}
+                            {{--'<strong class="text share-count"><span class="icon ico-share"></span><a href="#">138 shares</a></strong>'+--}}
+                            {{--'</footer>'+--}}
+                            {{--'</div>'+--}}
+                            {{--'</article>';--}}
+                    {{--});--}}
+                    {{--$('.posts-blocks').append(html);--}}
+                    {{--//显示分页--}}
+                    {{--var pageHtml = '<div class="nav-links">';--}}
+                    {{--if(data.prev_page_url) {--}}
+                        {{--pageHtml += '<a href="' + data.prev_page_url + '" class="prev page-numbers">PREV</a>';--}}
+                    {{--}--}}
+                    {{--if(data.current_page > 1){--}}
+                        {{--pageHtml += '<a href="'+data.path+'?page='+(parseInt(data.current_page)-1)+'" class="page-numbers">'+(parseInt(data.current_page)-1)+'</a>';--}}
+
+                    {{--}--}}
+                    {{--pageHtml +='<span class="page-numbers current">'+data.current_page+'</span>'+--}}
+{{--//                        '<span class="page-numbers dots hidden">…</span>'+--}}
+                        {{--'<span class="page-numbers dots">…</span>'+--}}
+                        {{--'<a href="'+data.path+'?page='+data.last_page+'" class="page-numbers">'+data.last_page+'</a>'+--}}
+                        {{--'<a href="'+data.next_page_url+'" class="next page-numbers">NEXT</a>'+--}}
+                        {{--'</div>';--}}
+                    {{--$('.pagination').append(pageHtml);--}}
+                {{--}--}}
+            {{--});--}}
+//        })
     </script>
 @endsection

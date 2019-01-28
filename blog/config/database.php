@@ -40,6 +40,17 @@ return [
         ],
 
         'mysql' => [
+//            读写分离操作
+//            'read' => [
+//                'host' => '192.168.1.1，196.168.1.3',
+//                'password' => '1234',
+//                  ...
+//            ],
+//            'write' => [
+//                'host' => '196.168.1.2'
+//            ....
+//            ],
+//        注意：目前读写分离仅支持单个写连接
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
@@ -50,7 +61,7 @@ return [
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
-            'strict' => true,
+            'strict' => true, //开启后，在一个生命周期内，如果有write操作，则其他的read操作都会是有一个connection，保证数据立即可读，避免主从同步延时
             'engine' => null,
         ],
 
