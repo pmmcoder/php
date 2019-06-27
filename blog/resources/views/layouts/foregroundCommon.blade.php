@@ -20,6 +20,15 @@
     <link rel="stylesheet" href="/css/blog/responsive.css">
     <!-- include the site stylesheet -->
     <link rel="stylesheet" href="/css/blog/colors.css">
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/js/markdown.editor/lib/marked.min.js"></script>
+    <script src="/js/markdown.editor/lib/prettify.min.js"></script>
+    <script src="/js/markdown.editor/lib/underscore.min.js"></script>
+    <script src="/js/markdown.editor/lib/flowchart.min.js"></script>
+    <script src="/js/markdown.editor/lib/jquery.flowchart.min.js"></script>
+    <script src="/js/markdown.editor/lib/raphael.min.js"></script>
+    <script src="/js/markdown.editor/lib/sequence-diagram.min.js"></script>
+    <script src="/js/markdown.editor/editormd.min.js"></script>
 </head>
 <body class="version-ii">
 <div class="loader-holder">

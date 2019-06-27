@@ -15,6 +15,8 @@ Route::resource('article', 'Blog\Admin\ArticleController');
 
 Route::get('article/show/{id}', 'Blog\Admin\ArticleController@show');
 
+Route::post('article/fileUpload', 'Blog\Admin\ArticleController@fileUpload');
+
 Route::post('login', [ 'as' => 'login', 'uses' => 'LoginController@do']);
 
 Route::post('register', [ 'as' => 'register', 'uses' => 'RegisterController@do']);
@@ -36,6 +38,7 @@ Route::get('archive/blogRecord', 'Blog\ArchiveController@blogRecord');
 Route::get('/', 'Blog\BlogController@index');
 Route::resource('archive', 'Blog\ArchiveController');
 Route::resource('single', 'Blog\SingleController');
+//Route::get('single/show/{id}', 'Blog\SingleController@show');
 Route::resource('contact', 'Blog\ContactController');
 Route::resource('blog', 'Blog\BlogController');
 

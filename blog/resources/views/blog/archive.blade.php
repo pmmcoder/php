@@ -62,48 +62,18 @@
                 <div class="row">
                     <!-- Content of the page -->
                     <div id="content" class="col-xs-12 col-md-8">
-                        <!-- Widget of the page -->
-                        {{--<div class="widget widget_search hidden-md hidden-lg">--}}
-                            {{--<form method="get" class="search-form" action="#">--}}
-                                {{--<fieldset>--}}
-                                    {{--<input type="search" name="s" placeholder="Type to search here">--}}
-                                    {{--<button type="button" class="ico-search"></button>--}}
-                                {{--</fieldset>--}}
-                            {{--</form>--}}
-                        {{--</div>--}}
-                        {{--<!-- Widget of the page end -->--}}
-                        {{--<!-- Widget of the page -->--}}
-                        {{--<section class="widget profile-widget version-ii hidden-lg hidden-md">--}}
-                            {{--<div class="profile-pic">--}}
-                                {{--<a href="#">--}}
-                                    {{--<img src="/images/blog/img11.jpg" alt="John Aston">--}}
-                                {{--</a>--}}
-                            {{--</div>--}}
-                            {{--<h3><a href="#"><img src="/images/blog/text-jhon-aston.png" alt="jhon aston"></a></h3>--}}
-                            {{--<p>Hi, I am John Aston. Duis autem vel eum dolor in hendrerit in vulputate velit esse mole consequat, vel illum dolore eu feugiat nulla lisis at vero eros et accumsan et iusto.</p>--}}
-                            {{--<!-- Social Network of the page -->--}}
-                            {{--<ul class="social-networks">--}}
-                                {{--<li><a href="#"><span class="icon ico-facebook"></span></a></li>--}}
-                                {{--<li><a href="#"><span class="icon ico-twitter"></span></a></li>--}}
-                                {{--<li><a href="#"><span class="icon ico-google-plus"></span></a></li>--}}
-                                {{--<li><a href="#"><span class="icon ico-linkedin"></span></a></li>--}}
-                                {{--<li><a href="#"><span class="icon ico-pinterest"></span></a></li>--}}
-                            {{--</ul>--}}
-                            {{--<!-- SOcial Network of the page end -->--}}
-                        {{--</section>--}}
-                        <!-- Widget of the page end -->
                         <!-- Posts Blocks of the page -->
                         <section class="posts-blocks">
                             @foreach ($blogRecords as $blogRecord)
                             <article class="post-block wow fadeInUp" data-wow-delay="0.6s">
                             <div class="post-holder">
-                            <div class="img-holder">
-                            <a href="#"><img src="/images/blog/img67.jpg" alt="image description"></a>
-                            </div>
+                            {{--<div class="img-holder">--}}
+                            {{--<a href="#"><img src="/images/blog/img67.jpg" alt="image description"></a>--}}
+                            {{--</div>--}}
                             <time datetime="'+ v.created_at+'"><a href="#">{{$blogRecord->created_at_format}} - Travel</a></time>
                             <h2><a href="#">{{$blogRecord->title}}</a></h2>
-                            <p>{{$blogRecord->description}}</p>
-                            <a href="{{ url('single') }}" class="read-more">Read more</a>
+                            <p>{{$blogRecord->introduce}}</p>
+                            <a href="{{ url('single'.'/'.$blogRecord->id) }}" class="read-more">Read more</a>
                             <footer>
                             <strong class="text comment-count"><span class="icon ico-comment"></span><a href="#">25 comments</a></strong>
                             <strong class="text share-count"><span class="icon ico-share"></span><a href="#">138 shares</a></strong>
@@ -112,21 +82,7 @@
                             </article>
                             @endforeach
                         </section>
-                        <!-- Posts Blocks of the page end -->
-                        <!-- Navigation of the page -->
-                        {{--<nav role="navigation" class="navigation pagination">--}}
-                            {{--<div class="nav-links">--}}
-                                {{--<a href="#" class="prev page-numbers">Prev post.</a>--}}
-                                {{--<a href="#" class="page-numbers">1</a>--}}
-                                {{--<span class="page-numbers current">2</span>--}}
-                                {{--<span class="page-numbers dots hidden">…</span>--}}
-                                {{--<a href="#" class="page-numbers">3</a>--}}
-                                {{--<a href="#" class="next page-numbers">NEXT post.</a>--}}
-                            {{--</div>--}}
-                            {{--{{ var_dump($blogRecords->currentPage) }}--}}
                             {{ $blogRecords->links() }}
-                        {{--</nav>--}}
-                        <!-- Navigation of the page end -->
                     </div>
                     <!-- Sidebar of the page -->
                     <aside id="sidebar" class="col-xs-12 col-md-4">

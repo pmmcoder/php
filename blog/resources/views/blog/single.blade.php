@@ -25,16 +25,11 @@
                         <!-- Post Block of the page -->
                         <div class="post-block # wow fadeInUp" data-wow-delay="0.4s">
                             <div class="post-holder">
-                                <div class="img-holder">
-                                    <img src="/images/blog/img53.jpg" alt="image description">
+                                <div class="custom-editor">
+                                    <div id="editor">
+                                        <textarea class="description-markdown" name="description" style="display:none;">{{ $blog->description }}</textarea>
+                                    </div>
                                 </div>
-                                <time datetime="2011-01-12"><a href="#">25th May - Travel</a></time>
-                                <h2>Traveling is awesome if you can enjoy.</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid untnibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, velillum dolore</p>
-                                <blockquote>
-                                    <p>Habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Anvesti nes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam dynamicus, qui sequitur mutationem</p>
-                                </blockquote>
-                                <p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigatio nes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.</p>
                                 <footer>
                                     <strong class="text"><span class="icon ico-user"></span><a href="#">David Ramon</a></strong>
                                     <strong class="text comment-count"><span class="icon ico-comment"></span><a href="#">25 comments</a></strong>
@@ -371,5 +366,19 @@
             <!-- Instagram Slider of the page end -->
         </main>
         <!-- Main of the page end -->
+        <script>
+            $(function() {
+                tex: true, // 默认false
+                    testEditorView = editormd.markdownToHTML('editor', {
+//            markdown: markdown,
+                        // htmlDecode: true // 开启html标签解析,为了安全性,默认不开启
+                        path : "/js/markdown.editor/lib/",
+                        htmlDecode: "style,script,iframe",
+                        taskList: true,
+                        flowChart: true, // 默认false
+                        sequenceDiagram: true, // 默认false
+                    })
+            })
+        </script>
 @endsection
 

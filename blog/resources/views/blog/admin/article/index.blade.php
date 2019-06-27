@@ -1,6 +1,9 @@
 @extends('layouts.adminCommon')
 
 @section('content')
+    <style>
+        table{table-layout:automatic;word-break:break-all;}
+    </style>
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
@@ -18,8 +21,8 @@
                         <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
                             <tr class="row">
-                                <th class="col-lg-4">内容</th>
                                 <th class="col-lg-2">标题</th>
+                                <th class="col-lg-4">内容</th>
                                 <th class="col-lg-4">查看</th>
                                 <th class="col-lg-1">编辑</th>
                                 <th class="col-lg-1">删除</th>
@@ -29,10 +32,10 @@
                             @foreach ($articles as $article)
                                 <tr class="row">
                                     <td class="col-lg-6">
-                                        {{ $article->description }}
+                                        {{ $article->title }}
                                     </td>
                                     <td class="col-lg-2">
-                                        {{ $article->title }}
+                                        {{ $article->introduce }}
                                     </td>
                                     <td class="col-lg-4">
                                         <a href="{{ URL('article/show/'.$article->id) }}">

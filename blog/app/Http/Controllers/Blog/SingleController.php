@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Blog;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Blog;
 
 class SingleController extends Controller
 {
@@ -14,7 +15,9 @@ class SingleController extends Controller
      */
     public function index()
     {
-        return view('blog.single');
+        $blog = Blog::first();
+        $blog->description = base64_decode($blog->description);
+        return view('blog.single',compact('blog'));
     }
 
     /**
@@ -47,6 +50,13 @@ class SingleController extends Controller
     public function show($id)
     {
         //
+        if(!$id){
+            $blog = Blog::first();
+        }else{
+            $blog = Blog::find($id);
+        }
+        $blog->description = base64_decode($blog->description);
+        return view('blog.single',compact('blog'));
     }
 
     /**
